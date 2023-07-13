@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { ConfigModule } from '@nestjs/config';
+import { BotModule } from './bot/bot.module';
 
 @Module({
-    controllers: [AppController],
-    providers: [AppService],
+    controllers: [],
+    providers: [],
     imports: [
         ConfigModule.forRoot({
             envFilePath: '.env'
@@ -20,7 +19,8 @@ import { ConfigModule } from '@nestjs/config';
             database: process.env.POSTGRES_DB,
             models: [],
             autoLoadModels: true
-        })
+        }),
+        BotModule
     ]
 })
 export class AppModule {}
